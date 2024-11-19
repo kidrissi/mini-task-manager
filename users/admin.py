@@ -3,7 +3,7 @@ from .models import Profile, CustomUser
 
 @admin.register(CustomUser)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('bio',)
+    list_display = ('username','bio',)
 
 
 @admin.register(Profile)

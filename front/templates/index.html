@@ -22,7 +22,10 @@
                         <a class="nav-link" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link" style="padding: 0; border: none; background: none;">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -69,6 +72,7 @@
                             <th>Priority</th>
                             <th>Deadline</th>
                             <th>Status</th>
+                            <th>Assigned to</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -81,6 +85,7 @@
                             <td>{{task.priority}}</td>
                             <td>{{task.deadline}}</td>
                             <td><span class="badge bg-warning text-dark">{{task.status}}</span></td>
+                            <td>{{task.assigned_to.username}}</td>
                             <td>
                                 <button class="btn btn-sm btn-success">Complete</button>
                                 <button class="btn btn-sm btn-danger">Delete</button>
