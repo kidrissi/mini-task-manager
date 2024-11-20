@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"  # Map container port 8000 to host port 8000
+    volumes:
+      - .:/app  # Bind mount the current directory for live code changes
+    environment:
+      - DEBUG=True
+    command: python manage.py runserver 0.0.0.0:8000

@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('front.urls')),  # Include URLs from the 'front' app
     path('users/', include('users.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+     path('register/', auth_views.LoginView.as_view(template_name='register.html'), name='register'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 
