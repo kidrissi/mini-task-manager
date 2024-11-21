@@ -20,14 +20,17 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('front.urls')),  # Include URLs from the 'front' app
+    path('', include('task.urls')),  # Include URLs from the 'front' app
     path('users/', include('users.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-     path('register/', auth_views.LoginView.as_view(template_name='register.html'), name='register'),
+    path('register/', auth_views.LoginView.as_view(template_name='register.html'), name='register'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('sentry-debug/', trigger_error),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
