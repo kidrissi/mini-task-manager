@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 LOCAL_APPS =['front', 'task', 'users']
+THIRD_PARTY_APPS = ['silk']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-] + LOCAL_APPS
+] + LOCAL_APPS +THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,7 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'middleware.RedirectIfNotLoggedInMiddleware',  # Add this line
+    'middleware.RedirectIfNotLoggedInMiddleware',
+    'silk.middleware.SilkyMiddleware',
 
 ]
 
@@ -129,7 +131,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 LOGIN_REDIRECT_URL = '/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
-
+STATIC_ROOT = BASE_DIR / 'static'
 import sentry_sdk
 
 sentry_sdk.init(

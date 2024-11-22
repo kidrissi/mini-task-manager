@@ -31,6 +31,7 @@ urlpatterns = [
     path('register/', auth_views.LoginView.as_view(template_name='register.html'), name='register'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('sentry-debug/', trigger_error),
+    path('silk/', include('silk.urls', namespace='silk')),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
